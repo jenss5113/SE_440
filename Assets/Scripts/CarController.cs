@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class CarController : MonoBehaviour
         Front,
         Rear
     }
-    
+
     [System.Serializable]
     public struct Wheel
     {
@@ -19,7 +20,7 @@ public class CarController : MonoBehaviour
         public WheelCollider collider;
         public Transform transform;
     }
-    
+
     [SerializeField]
     private List<Wheel> wheels = new List<Wheel>();
 
@@ -28,19 +29,26 @@ public class CarController : MonoBehaviour
     [SerializeField] private float maxSteerAngle = 30f;
     private float _moveInput;
     private float _steerInput;
+    [SerializeField] private InputAction input;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        input.Enable();
+        input.performed += ctx =>
+        {
+            _moveInput = ctx.ReadValue<Vector2>().y;
+            _steerInput = ctx.ReadValue<Vector2>().x;
+        };
     }
 
     // Update is called once per frame
     void Update()
     {
-        _moveInput = Input.GetAxis("Vertical");
-        _steerInput = Input.GetAxis("Horizontal");
+        // _moveInput = Input.GetAxis("Vertical");
+        // _steerInput = Input.GetAxis("Horizontal");
         WheelAnimation();
-        BrakeControl();
+        //BrakeControl();
     }
 
     private void BrakeControl()
@@ -86,7 +94,7 @@ public class CarController : MonoBehaviour
             if (wheel.type == WheelType.Front)
             {
                 float steerAngle = _steerInput * maxSteerAngle * steerSpeed;
-                wheel.collider.steerAngle = 
+                wheel.collider.steerAngle =
                     Mathf.Lerp(wheel.collider.steerAngle, steerAngle, 0.5f);
             }
         }
