@@ -27,7 +27,7 @@ public class FloatingObject : MonoBehaviour
         int poinUnderWaterCount = 0;
         foreach (var point in floatPoints)
         {
-            var diff = point.position.y - 0;
+            var diff = point.position.y - OcenManager.Instance.GetWaveHeight(point.position);
             if (diff < 0)
             {
                 _rb.AddForceAtPosition(

@@ -455,6 +455,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 652353296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &556513702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 556513704}
+  - component: {fileID: 556513703}
+  m_Layer: 0
+  m_Name: Ocean
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &556513703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556513702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00a129607b9a546ae1f177072d1470, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDontDestroyOnload: 0
+  ocean: {fileID: 785344704}
+  wavePower: 2
+--- !u!4 &556513704
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556513702}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 135.49234, y: 10.445934, z: 36.770428}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &652353295
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +584,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &785344704 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1507636620937791836, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
+  m_PrefabInstance: {fileID: 1177955116}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &955974346
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,7 +736,7 @@ Transform:
   m_GameObject: {fileID: 955974346}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 149.81, y: 18.1, z: 27.6}
+  m_LocalPosition: {x: 149.81, y: 18.1, z: 33.84}
   m_LocalScale: {x: 4.1, y: 4.1, z: 4.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1224,11 +1276,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44cb2a68c3e2a3c40ae64b89d33aee77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  underWaterDrag: 70
-  underWaterAngularDrag: 7
-  airDrag: 1
-  airAngularDrag: 10
-  waterPower: 8
+  underWaterDrag: 5
+  underWaterAngularDrag: 2
+  airDrag: 0
+  airAngularDrag: 0.05
+  waterPower: 5
   floatPoints:
   - {fileID: 1793640642}
   - {fileID: 1378685263}
@@ -1612,3 +1664,4 @@ SceneRoots:
   - {fileID: 367866409}
   - {fileID: 955974352}
   - {fileID: 1812635386}
+  - {fileID: 556513704}
