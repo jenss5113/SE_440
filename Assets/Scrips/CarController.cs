@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 [RequireComponent(typeof(Rigidbody))]
-public class CarController : MonoBehaviour
+public class CarController : NetworkBehaviour
 {
     public enum Wheeltype
     {
@@ -37,6 +38,7 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isLocalPlayer) return;
         _moveInput = Input.GetAxis("Vertical");
         _steerInput = Input.GetAxis("Horizontal");
         WheelAnimation();
@@ -44,6 +46,7 @@ public class CarController : MonoBehaviour
     }
     private void LateUpdate()
     {
+        if (!isLocalPlayer) return;
         Move();
         Steer();
     }
