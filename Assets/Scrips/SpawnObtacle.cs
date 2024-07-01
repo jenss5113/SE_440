@@ -1,9 +1,10 @@
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class SpawnObtacle : MonoBehaviour
+public class SpawnObtacle : NetworkBehaviour
 {
     [SerializeField] private float spawnInterval = 1f;
     private float _timer;
@@ -17,14 +18,14 @@ public class SpawnObtacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _timer += Time.deltaTime;
-        if(_timer > spawnInterval)
-        {
-            _timer = 0;
-            Spawn ();
-        }    
+       // _timer += Time.deltaTime;
+      //  if(_timer > spawnInterval)
+       // {
+       //     _timer = 0;
+       //     Spawn ();
+      //  }    
      }
-    private void Spawn()
+    public void Spawn()
     {
         if (!ObjectPool.Instance.CanSpawn()) return;
        var obj = ObjectPool.Instance.PickOne(transform);
@@ -32,6 +33,7 @@ public class SpawnObtacle : MonoBehaviour
         pos.y = Mathf.Abs(pos.y);
         obj.transform.position = pos;
         obj.SetActive(true);
+        NetworkServer.Spawn(obj);
     }    
 
       
